@@ -4,7 +4,7 @@ import numpy as np
 
 # Parameters
 fps = 60
-width, height = 1200, 1200
+width, height = 800, 800
 
 number_of_boids = 100
 
@@ -30,6 +30,8 @@ class Boid:
         self.separation_weight = separation_weight
         self.alignment_weight = alignment_weight
         self.cohesion_weight = cohesion_weight
+
+        self.color = (random.randint(0, 255), random.randint(0, 255), random.randint(0, 255))
 
     def update(self):
 
@@ -98,7 +100,7 @@ while running:
     for boid in boids:
         boid.applyForce(boids)
         boid.update()
-        pygame.draw.circle(win, (255,255,255), boid.position.astype(int), 5)
+        pygame.draw.circle(win, boid.color, boid.position.astype(int), 5)
 
     pygame.display.update()
 
